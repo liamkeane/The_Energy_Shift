@@ -1,0 +1,54 @@
+<!-- Template for the home page which tells the user about the purpose of our
+    site and allows them to navigate to theData page-->
+<html lang="en">
+
+<head>
+    <!-- contains the title of the page, import(s) fonts, and imports style sheet(s) -->
+    <title>The Energy Shift</title>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Work+Sans:700" rel="stylesheet">
+    <link type="text/css" href="{{ url_for('static', filename='global.css') }}" rel="stylesheet" />
+    <link type="text/css" href="{{ url_for('static', filename='home.css') }}" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- project title -->
+    <div class="titlecontainer">
+        <h1>The Energy Shift</h1>
+    </div>
+
+    <!-- this class contains the navigation bar with links to our other pages. -->
+    <div class="navcontainer">
+        <nav>
+            <ul>
+                <li><a href="/" class="currentPage">Home</a></li>
+                <li><a href="/theData">Search the Data</a></li>
+                <li><a href="/aboutTheData">About the Data</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="content">
+        <!-- Title and introductory text -->
+        <h2>
+            A glimpse into the fight against climate change
+        </h2>
+        <p>
+            We designed the Energy Shift to allow you to <b>easily visualize the United States'
+                energy production </b> in 2021. By selecting a state, you can
+            view useful information about energy and renewable
+            energy production for that state.
+        </p>
+        <!-- Button to navigate to the main page where the results of our queries are shown -->
+        <div class="homebutton">
+            <button>
+                <a href="/theData" class="buttonlink">
+                    <p class="buttontext">Get started</p>
+                </a>
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>

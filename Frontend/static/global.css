@@ -1,0 +1,111 @@
+/* Custom styling for all pages on the site
+Note: some pages will override some of these styles */
+
+/* Text styling for all forms of text on the site */
+body {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  background-color: #e5e5e5;
+}
+
+h1 {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 63px;
+  line-height: 79px;
+  text-align: center;
+  color: #323954;
+}
+
+h2 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-size: 47px;
+  font-style: normal;
+  color: #323954;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  color: #323954;
+}
+
+p {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 50px;
+  text-align: justify;
+  color: #323954;
+}
+
+/* Styling for the divs that contain the title and navbar respectively */
+div.titlecontainer {
+  display: flex;
+  justify-content: center;
+}
+
+div.navcontainer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for the nav bar and all of its elements */
+nav {
+  display: flex;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+nav li a {
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 16px;
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  color: #323954;
+  transition: color 0.1s ease;
+}
+
+.currentPage {
+  text-decoration: underline;
+}
+
+nav li a:hover {
+  text-decoration: underline;
+  color: #944117;
+}
+
+/* Styling for the div that contains content for all of the pages
+Note: this is overridden on the theData page */
+div.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-left: 39px;
+  margin-right: 180px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

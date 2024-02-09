@@ -1,0 +1,334 @@
+<!-- Template for The Data page which displays the results of our queries -->
+
+<html lang="en">
+
+<head>
+    <!-- contains the title of the page, imports font(s), and imports style sheet(s) -->
+    <title>The Energy Shift</title>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Work+Sans:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link type="text/css" href="{{ url_for('static', filename='global.css') }}" rel="stylesheet" />
+    <link type="text/css" href="{{ url_for('static', filename='theData.css') }}" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- the title of our project -->
+    <div class="titlecontainer">
+        <h1>The Energy Shift</h1>
+    </div>
+
+    <!-- this class contains the navigation bar with links to our other pages. -->
+    <div class="navcontainer">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/theData" class="currentPage">Search the Data</a></li>
+                <li><a href="/aboutTheData">About the Data</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- this class contains the dropdown menu with each of the fifty states -->
+    <div class="content">
+        <form method="POST" name="statesForm">
+            <div class="formContent">
+                <label for="states">Choose a state</label>
+                <br>
+                <select name="statesSelect" id="states">
+                    <option value="AL" {% if selectedState=="AL" %} selected {% endif %}>
+                        Alabama
+                    </option>
+                    <option value="AK" {% if selectedState=="AK" %} selected {% endif %}>
+                        Alaska
+                    </option>
+                    <option value="AZ" {% if selectedState=="AZ" %} selected {% endif %}>
+                        Arizona
+                    </option>
+                    <option value="AR" {% if selectedState=="AR" %} selected {% endif %}>
+                        Arkansas
+                    </option>
+                    <option value="CA" {% if selectedState=="CA" %} selected {% endif %}>
+                        California
+                    </option>
+                    <option value="CO" {% if selectedState=="CO" %} selected {% endif %}>
+                        Colorado
+                    </option>
+                    <option value="CT" {% if selectedState=="CT" %} selected {% endif %}>
+                        Connecticut
+                    </option>
+                    <option value="DE" {% if selectedState=="DE" %} selected {% endif %}>
+                        Delaware
+                    </option>
+                    <option value="FL" {% if selectedState=="FL" %} selected {% endif %}>
+                        Florida
+                    </option>
+                    <option value="GA" {% if selectedState=="GA" %} selected {% endif %}>
+                        Georgia
+                    </option>
+                    <option value="HI" {% if selectedState=="HI" %} selected {% endif %}>
+                        Hawaii
+                    </option>
+                    <option value="ID" {% if selectedState=="ID" %} selected {% endif %}>
+                        Idaho
+                    </option>
+                    <option value="IL" {% if selectedState=="IL" %} selected {% endif %}>
+                        Illinois
+                    </option>
+                    <option value="IN" {% if selectedState=="IN" %} selected {% endif %}>
+                        Indiana
+                    </option>
+                    <option value="IA" {% if selectedState=="IA" %} selected {% endif %}>
+                        Iowa
+                    </option>
+                    <option value="KS" {% if selectedState=="KS" %} selected {% endif %}>
+                        Kansas
+                    </option>
+                    <option value="KY" {% if selectedState=="KY" %} selected {% endif %}>
+                        Kentucky
+                    </option>
+                    <option value="LA" {% if selectedState=="LA" %} selected {% endif %}>
+                        Louisiana
+                    </option>
+                    <option value="ME" {% if selectedState=="ME" %} selected {% endif %}>
+                        Maine
+                    </option>
+                    <option value="MD" {% if selectedState=="MD" %} selected {% endif %}>
+                        Maryland
+                    </option>
+                    <option value="MA" {% if selectedState=="MA" %} selected {% endif %}>
+                        Massachusetts
+                    </option>
+                    <option value="MI" {% if selectedState=="MI" %} selected {% endif %}>
+                        Michigan
+                    </option>
+                    <option value="MN" {% if selectedState=="MN" %} selected {% endif %}>
+                        Minnesota
+                    </option>
+                    <option value="MS" {% if selectedState=="MS" %} selected {% endif %}>
+                        Mississippi
+                    </option>
+                    <option value="MO" {% if selectedState=="MO" %} selected {% endif %}>
+                        Missouri
+                    </option>
+                    <option value="MT" {% if selectedState=="MT" %} selected {% endif %}>
+                        Montana
+                    </option>
+                    <option value="NE" {% if selectedState=="NE" %} selected {% endif %}>
+                        Nebraska
+                    </option>
+                    <option value="NV" {% if selectedState=="NV" %} selected {% endif %}>
+                        Nevada
+                    </option>
+                    <option value="NH" {% if selectedState=="NH" %} selected {% endif %}>
+                        New Hampshire
+                    </option>
+                    <option value="NJ" {% if selectedState=="NJ" %} selected {% endif %}>
+                        New Jersey
+                    </option>
+                    <option value="NM" {% if selectedState=="NM" %} selected {% endif %}>
+                        New Mexico
+                    </option>
+                    <option value="NY" {% if selectedState=="NY" %} selected {% endif %}>
+                        New York
+                    </option>
+                    <option value="NC" {% if selectedState=="NC" %} selected {% endif %}>
+                        North Carolina
+                    </option>
+                    <option value="ND" {% if selectedState=="ND" %} selected {% endif %}>
+                        North Dakota
+                    </option>
+                    <option value="OH" {% if selectedState=="OH" %} selected {% endif %}>
+                        Ohio
+                    </option>
+                    <option value="OK" {% if selectedState=="OK" %} selected {% endif %}>
+                        Oklahoma
+                    </option>
+                    <option value="OR" {% if selectedState=="OR" %} selected {% endif %}>
+                        Oregon
+                    </option>
+                    <option value="PA" {% if selectedState=="PA" %} selected {% endif %}>
+                        Pennsylvania
+                    </option>
+                    <option value="RI" {% if selectedState=="RI" %} selected {% endif %}>
+                        Rhode Island
+                    </option>
+                    <option value="SC" {% if selectedState=="SC" %} selected {% endif %}>
+                        South Carolina
+                    </option>
+                    <option value="SD" {% if selectedState=="SD" %} selected {% endif %}>
+                        South Dakota
+                    </option>
+                    <option value="TN" {% if selectedState=="TN" %} selected {% endif %}>
+                        Tennessee
+                    </option>
+                    <option value="TX" {% if selectedState=="TX" %} selected {% endif %}>
+                        Texas
+                    </option>
+                    <option value="UT" {% if selectedState=="UT" %} selected {% endif %}>
+                        Utah
+                    </option>
+                    <option value="VT" {% if selectedState=="VT" %} selected {% endif %}>
+                        Vermont
+                    </option>
+                    <option value="VA" {% if selectedState=="VA" %} selected {% endif %}>
+                        Virginia
+                    </option>
+                    <option value="WA" {% if selectedState=="WA" %} selected {% endif %}>
+                        Washington
+                    </option>
+                    <option value="WV" {% if selectedState=="WV" %} selected {% endif %}>
+                        West Virginia
+                    </option>
+                    <option value="WI" {% if selectedState=="WI" %} selected {% endif %}>
+                        Wisconsin
+                    </option>
+                    <option value="WY" {% if selectedState=="WY" %} selected {% endif %}>
+                        Wyoming
+                    </option>
+                </select>
+                <!-- POSTs the chosen state for the webapp -->
+                <input type="submit" value="Go">
+            </div>
+
+        </form>
+        <!-- this class displays the results of the chosen state -->
+        {% if selectedState != None %}
+        <div class="resultsContainer">
+            <div class="numericalResultsRowContainer">
+                <div class="numericalResultContainer">
+                    <h2>Total Annual Output</h2>
+                    <h3>{{ totalEnergy }}</h3>
+                    <h4>Thousand Megawatt Hours</h4>
+                </div>
+
+                <div class="numericalResultContainer">
+                    <h2>Total Annual <em>Renewable</em> Output</h2>
+                    <h3>{{ totalRenewableEnergy }} ({{ percentageRenewableEnergy }}%)</h3>
+                    <h4>Thousand Megawatt Hours</h4>
+                </div>
+            </div>
+
+            <p><em>The above percentage represents the percentage of renewable energy production compared to non-renewable</em></p>
+
+
+            <!-- line chart for the results from getTotalEnergyForStateByMonth() generated with the Chart.js package -->
+            <div class="chartTitleText">
+                <h2>Total Energy Production</h2>
+            </div>
+            <div class="energyLineChartContainer">
+                <canvas id="energyLineChartCanvas"></canvas>
+            </div>
+
+            <!-- line chart for the results from getEnergyByCategoryForState() generated with the Chart.js package -->
+            <div class="chartTitleText">
+                <h2>Categories of Renewable Energy Production</h2>
+            </div>
+            <div class="renewableEnergyPieChartContainer">
+                <canvas id="renewableEnergyPieChartCanvas"></canvas>
+            </div>
+        </div>
+
+        <script>
+            // insert the line and pie chart into the HTML in the canvas tags
+            let energyLineChartCanvas = document.getElementById("energyLineChartCanvas");
+            let renewableEnergyPieChartCanvas = document.getElementById("renewableEnergyPieChartCanvas");
+
+            // data for charts
+            let energyLineChartData = {{ totalEnergyByMonth| tojson }};
+
+            let renewableEnergyPieChartLabels = {{ categories| tojson }};
+            let renewableEnergyPieChartData = {{ categoryValue| tojson }};
+            let numberOfLabels = renewableEnergyPieChartLabels.length;
+            let totalEnergyRepresentedInPieChart = {{ totalRenewableEnergy| tojson }}
+
+            // get the full state name to use in chart titles
+            let selectedStateFullNameForCharts = {{ selectedStateFullName| tojson }};
+
+            // font styling for charts
+            Chart.defaults.font.size = 21;
+            Chart.defaults.font.family = "Montserrat";
+
+            // colors for the sections of the pie chart
+            const colors = [
+                '#EA5147',
+                '#D04573',
+                '#A14D8C',
+                '#69548D',
+                '#3D5278',
+                '#F9F871',
+                '#FFB967',
+                '#EF8577',
+                '#B38AAE',
+                '#039590'
+            ];
+
+            // line chart for the results of the getRenewableEnergyForState() function
+            let energyLineChart = new Chart(energyLineChartCanvas, {
+                type: 'line',
+                // defines the data and the data labels to be used in the line chart
+                data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    datasets: [{
+                        label: 'Total Energy Production for ' + selectedStateFullNameForCharts + ' in 2021 (thousand megawatt hours)',
+                        data: energyLineChartData,
+                        borderWidth: 5,
+                        backgroundColor: "#ea5147",
+                        borderColor: "#ea5147"
+                    }]
+                },
+                //Labels axes
+                options: {
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: "Thousand Megawatt Hours"
+                            }
+                        }
+                    },
+                    //hides the legend
+                    plugins: {
+                        legend: {
+                            position: "bottom",
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // pie chart for the results of the getEnergyByCategoryForState() function
+            let renewableEnergyPieChart = new Chart(renewableEnergyPieChartCanvas, {
+                type: 'doughnut',
+                // defines the data, data labels, and colors to be used in the pie chart
+                data: {
+                    labels: renewableEnergyPieChartLabels,
+                    datasets: [{
+                        data: renewableEnergyPieChartData,
+                        backgroundColor: colors.slice(0, numberOfLabels)
+                    }]
+                }
+                ,
+                //displays percentage labels for each portion of the pie chart
+                options: {
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => {
+                                    return Math.round(10000 * context.parsed / totalEnergyRepresentedInPieChart)/100 + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+        </script>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

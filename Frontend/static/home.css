@@ -1,0 +1,44 @@
+/* Custom styling for the home page */
+
+/* Styling for the button that appears on the home page and the text inside it */
+div.homebutton {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-right: 80%;
+  gap: 10px;
+}
+
+button {
+  background-color: #ea5147;
+  border-radius: 10px;
+  text-shadow: none;
+  border-color: #ea5147;
+  transition: width 0.3s ease, background-color 0.3s ease, transform 0.5s ease,
+    box-shadow 0.2s ease, width 0.3s ease;
+}
+
+button:hover {
+  background-color: #323954;
+  border-color: #323954;
+}
+
+button:active {
+  background-color: #5557aa;
+  border-color: #5557aa;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+p.buttontext {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a.buttonlink {
+  text-decoration: none;
+}

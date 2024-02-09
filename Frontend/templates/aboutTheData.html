@@ -1,0 +1,120 @@
+<!-- Template for The About The Data page which provides the user information about our data,
+    it's source and the process of choosing and working with this data -->
+
+<html lang="en">
+
+<head>
+    <!-- contains the title of the page, import(s) fonts, and imports style sheet(s) -->
+    <title>The Energy Shift</title>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Work+Sans:700" rel="stylesheet">
+    <link type="text/css" href="{{ url_for('static', filename='global.css') }}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="titlecontainer">
+        <h1>The Energy Shift</h1>
+    </div>
+
+    <!-- this class contains the navigation bar with links to our other pages. -->
+    <div class="navcontainer">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/theData">Search the Data</a></li>
+                <li><a href="/aboutTheData" class="currentPage">About the Data</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- this class styles the following parahraphs to be consistent with our website design -->
+    <div class="content">
+        <h2>Data Information</h2>
+        <ul>
+            <li>
+                <p>Source: Data Planet (originally US Department of Energy) </p>
+            </li>
+            <!-- the following links send the user to our data and its usage policy -->
+            <li>
+                <p>Data Retrieved from <a
+                        href="https://dataplanet.sagepub.com/dataset?view=AA0BXQAAgAD7AgAAAAAAAAAA3_zMslwIJ8Ve1X%24GDY3Fyttm1VQZdFFpw3Kj7Q0y8x20ZPKB4nWXRnS7e6hbTAI9t5Jjx2QZCSG7YiHDox2ksNPqDWxIEq%2430_2cOGotSoElr2ibIwAsb_W84vu7gPJ%242WKjHZFIxqXk3hxjQ6QDHY80d%24Gvszt0xACf9u%24TdFvu4VLInFDDvrsNys4VG7wPznGxl39CIH7wgit3JvXzgmki2Tpxxrlpf3XhIfRJIWRi6FweouZK9ZmbM5WEgtQQmkc7CeRQcn0jBeOyIPdGzi6CPqy2vOJzbdTqr0bLei8dqopOai9FrMRhlf67AI8jcqnXZKochp7pMS32ONB3YxbXiNjbWqbC5Fk99kPWTI4ksnjPtk6gBMPgcQOrY6cT6zeESq4PGSgdnKuUP5AwKImaHIsCqTWhDKm8QI7YfA">
+                        Generation of Electricity Dataset</a>
+                </p>
+            </li>
+            <li>
+                <p> <a href="https://dataplanet.sagepub.com/terms-of-use">Data Usage Policy</a> </p>
+            </li>
+        </ul>
+
+        <!-- the following paragraphs explain our process of data collection and cleaning -->
+        <h2>Why This Data?</h2>
+        <ul>
+            <li>
+                <p>We have a mutual <b>curiosity in renewable energy</b></p>
+            </li>
+            <li>
+                <p><b>This data is comprehenisve</b> as it records each States' monthly/quarterly energy generation
+                    from 2001 through 2021, and their specific categories of production</p>
+            </li>
+            <li>
+                <p>With the decrease in the costs of renewable energy and energy storage, the combination of renewable
+                    energy generation and storage to replace fossil fuels is more economically feasible. Therefore,
+                    <b>it can
+                        be predicted that the database we have chosen will be required by various professions.</b>
+                </p>
+            </li>
+        </ul>
+
+        <!-- the following bullet points explain our data cleaning and organizing process -->
+        <h2>Our Process</h2>
+        <ul>
+            <li>
+                <p>
+                    <b>
+                        We began with a CSV containing the monthly energy production of each state in 2021 before
+                        converting itinto SQL tables
+                    </b>
+                </p>
+            </li>
+            <li>
+                <p>This data required cleaning and organizing to suit our project's needs </p>
+            </li>
+            <li>
+                <p>We swapped the column labels from month, each state with its category of production to location,
+                    category of
+                    production, and months from January to December</p>
+            </li>
+            <li>
+                <p>We found this format was more readable than its original format</p>
+            </li>
+        </ul>
+
+        <!-- the following bullet points explain a quirk in our data that is unresolved -->
+        <h2>A Note on Total Annual Output and Total Annual Renewable Output</h2>
+        <ul>
+            <li>
+                <p>There are some states for which the Total Annual Renewable output is greater than the total annual
+                    output</p>
+            </li>
+            <li>
+                <p>We are not completly sure why this is, but we know it has something to do with the original data</p>
+            </li>
+            <li>
+                <p>We calculate total annual ouput from the original variable "All fuels" in the original data set </p>
+            </li>
+            <li>
+                <p>We calculate total annual renewable output from the sums of all renewable categories in the data set
+                </p>
+            <li>
+                <p>We theorize that "All fuels" may just contain the total energy produced in a state that stays in a
+                    state and that all the other renewable categories (from which we calculate Total Annual Renewable Output) may
+                    also include energy produced in that state that is exported to other states
+                </p>
+            </li>
+        </ul>
+        </p>
+
+    </div>
+
+</body>
+
+</html>
